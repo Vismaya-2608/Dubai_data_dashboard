@@ -106,5 +106,4 @@ with tab1:
             st.error(f"Missing column for IQR filtering: {ke}")
         except Exception as e:
             st.error(f"❌ Error during IQR filtering or plotting: {e}")
-else:
-    st.info("👈 Upload a CSV or Excel file to begin analysis.")
+
