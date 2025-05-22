@@ -8,7 +8,7 @@ st.set_page_config(page_title="Real Estate Dashboard & Target Distribution", lay
 st.title("🏙️ Dubai Real Estate Dashboard & Target Distribution")
 
 # --- File Upload ---
-uploaded_file = st.file_uploader("vis")
+uploaded_file = "new_tdf.csv"
 
 # --- IQR Bound Helper ---
 def get_iqr_bounds(df, col):
@@ -78,10 +78,7 @@ def plot_target_distribution_by_object_columns_streamlit(dfs, target, df_names):
 
 # --- Main Logic ---
 if uploaded_file:
-    if uploaded_file.name.endswith(".csv"):
-        df = pd.read_csv(uploaded_file)
-    else:
-        df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
 
     # Normalize column names: lowercase and underscores
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
