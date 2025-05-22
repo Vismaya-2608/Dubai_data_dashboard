@@ -221,9 +221,9 @@ if uploaded_file:
             dfs = [df, odf]
             df_names = ['Raw Data', 'Data after Cleaning Outliers']
 
-            if st.button("📊 Generate Target Distribution Plots"):
-                st.success(f"Generating plots for target column: **{target_column}**")
-                plot_target_distribution_by_object_columns_streamlit(dfs, target_column, df_names)
+            # if st.button("📊 Generate Target Distribution Plots"):
+            # st.success(f"Generating plots for target column: **{target_column}**")
+            plot_target_distribution_by_object_columns_streamlit(dfs, target_column, df_names)
 
         except KeyError as ke:
             st.error(f"Missing column for IQR filtering: {ke}")
