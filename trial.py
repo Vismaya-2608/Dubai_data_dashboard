@@ -79,7 +79,7 @@ def plot_target_distribution_by_object_columns_streamlit(dfs, target, df_names):
 # --- Main Logic ---
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-        with tab1:
+    with tab1:
         st.header("🎯 Comparative Target Distribution Dashboard")
 
         try:
