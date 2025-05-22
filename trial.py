@@ -79,3 +79,32 @@ def plot_target_distribution_by_object_columns_streamlit(dfs, target, df_names):
 # --- Main Logic ---
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
+with tab1:
+        st.header("🎯 Comparative Target Distribution Dashboard")
+
+        try:
+            # Check if required columns exist for IQR filtering
+            for col in ['meter_sale_price', 'procedure_area']:
+                if col not in df.columns:
+                    st.warning(f"Column '{col}' missing for outlier filtering. Skipping filtering.")
+                    raise KeyError(col)
+
+            mlower, mupper = get_iqr_bounds(df, 'meter_sale_price')
+            plower, pupper = get_iqr_bounds(df, 'procedure_area')
+
+            otdf = df[(df['meter_sale_price'] >= mlower) & (df['meter_sale_price'] <= mupper)]
+            odf = otdf[(otdf['procedure_area'] >= plower) & (otdf['procedure_area'] <= pupper)]
+
+            dfs = [df, odf]
+            df_names = ['Raw Data', 'Data after Cleaning Outliers']
+
+            # if st.button("📊 Generate Target Distribution Plots"):
+            # st.success(f"Generating plots for target column: **{target_column}**")
+            plot_target_distribution_by_object_columns_streamlit(dfs, target_column, df_names)
+
+        except KeyError as ke:
+            st.error(f"Missing column for IQR filtering: {ke}")
+        except Exception as e:
+            st.error(f"❌ Error during IQR filtering or plotting: {e}")
+else:
+    st.info("👈 Upload a CSV or Excel file to begin analysis.")
