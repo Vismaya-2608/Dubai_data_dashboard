@@ -7,12 +7,8 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Real Estate Dashboard & Target Distribution", layout="wide")
 st.title("🏙️ Dubai Real Estate Dashboard & Target Distribution")
 
-st.markdown(
-    "[Link for the dataset to upload](https://drive.google.com/file/d/10HKlIrWIhj2TMjdFREijV_ev7hIRZXoF/view?usp=drive_link)"
-)
-
 # --- File Upload ---
-uploaded_file = st.file_uploader("📂 Upload your CSV or Excel file", type=["csv", "xlsx"])
+uploaded_file = st.file_uploader("new_tdf.csv")
 
 # --- IQR Bound Helper ---
 def get_iqr_bounds(df, col):
