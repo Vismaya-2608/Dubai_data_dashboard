@@ -8,7 +8,7 @@ st.set_page_config(page_title="Real Estate Dashboard & Target Distribution", lay
 st.title("🏙️ Dubai Real Estate Dashboard & Target Distribution")
 
 # --- File Upload ---
-uploaded_file = st.file_uploader("new_tdf.csv")
+uploaded_file = st.file_uploader("vis")
 
 # --- IQR Bound Helper ---
 def get_iqr_bounds(df, col):
